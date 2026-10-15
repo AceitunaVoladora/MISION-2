@@ -4,10 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mision-2</title>
+    <title>Sonora</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>Sonora</h1>
+
+      <section id = 'seccion-busqueda'>
+        <div id = 'barra-busqueda'>
+          <select id = "tipo-busqueda">
+            <option value="cancion">Canción</option>
+            <option value="artista">Artista</option>
+            <option value="album">Álbum</option>
+          </select>
+
+          <input type="search" id = 'contenido-busqueda' placeholder="Buscar canción, artista o álbum">
+          <button id = 'boton-busqueda'>Buscar</button>
+        </div>
+      </section>
+
+      <section id = 'resultado'></section>
+
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
