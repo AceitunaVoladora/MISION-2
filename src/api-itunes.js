@@ -1,7 +1,7 @@
 const URL_API = "https://itunes.apple.com/search";
 
 const ENTIDADES = {
-    camcion: "song",
+    cancion: "song",
     artista: "musicArtist",
     album: "album"
 }
