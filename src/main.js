@@ -1,5 +1,7 @@
 import './style.css'
 import { buscarContenido } from './api-itunes';
+import { presentarResultados } from './logica';
+import { mostrarMensaje, ponerResultados } from './render';
 
 const tipoBusqueda = document.querySelector("#tipo-busqueda");
 const contenidoBusqueda = document.querySelector("#contenido-busqueda");
@@ -12,21 +14,26 @@ async function realizarBusqueda() {
   
   //para no buscar si no hay nada
   if(termino === ""){
-    resultado.textContent = "Busca algo...";
+    mostrarMensaje(resultado, "Busca algo...");
     return;
   }
 
-  resultado.textContent = "Buscando...";
+  mostrarMensaje(resultado, "Buscando...");
 
   try{
     const datos = await buscarContenido(termino, tipo);
+    const items = presentarResultados(datos, tipo);
 
-    console.log(datos);
+    if(items.length === 0){
+      mostrarMensaje(resultado, `Sin resultados para "${termino}".`)
+    }else{
+      mostrarMensaje(resultado, `Hemos encontrado ${datos.length} resultados.`);
+    }
 
-    resultado.textContent = `Hemos encontrado ${datos.length} resultados`;
+    ponerResultados(resultado, items);
   }catch(error){
     console.error(error);
-    resultado.textContent = "Ha habido un error con la consulta."
+    mostrarMensaje(resultado, "Ha habido un error con la consulta.")
   }
 }
 
