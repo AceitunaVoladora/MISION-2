@@ -37,6 +37,5 @@ export function presentarResultados(resultados, tipo){
     //prompt?
     //despues de map se cambian los nombres a los que hay en NORMALIZADOR ej: trackId -> id
     //filter quita los resultados que no nos interesan pq faltan datos (en mi caso el id y el titulo/nombre)
-    //map((item) => ({ ...item, imagen: item.imagen?.replace("100x100", "300x300") ?? null }))
-    return resultados.map(normalizar).filter((item) => item.id && item.titulo);
+    return resultados.map(normalizar).filter((item) => item.id && item.titulo).map((item) => ({...item, imagen: item.imagen?.replace("100x100", "300x300")}));
 }
