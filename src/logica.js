@@ -12,11 +12,11 @@ const NORMALIZADOR ={
     artista: (r) => ({
         id: r.artistId,
         titulo: r.artistName,
-        subtitulo: null,
+        subtitulo: r.primaryGenreName ?? "Artista",
         imagen: null,
         preview: null,
         duracion: 0,
-        genero: r.primaryGenreName ?? "Desconocido",
+        genero: null,
         url: r.artistLinkUrl,
     }),
     album: (r) => ({
@@ -38,5 +38,5 @@ export function presentarResultados(resultados, tipo){
     //despues de map se cambian los nombres a los que hay en NORMALIZADOR ej: trackId -> id
     //filter quita los resultados que no nos interesan pq faltan datos (en mi caso el id y el titulo/nombre)
     //map((item) => ({ ...item, imagen: item.imagen?.replace("100x100", "300x300") ?? null }))
-    return resultados.map(normalzar).filter((item) => item.id && item.titulo);
+    return resultados.map(normalizar).filter((item) => item.id && item.titulo);
 }

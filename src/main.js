@@ -1,7 +1,7 @@
 import './style.css'
-import { buscarContenido } from './api-itunes';
-import { presentarResultados } from './logica';
-import { mostrarMensaje, ponerResultados } from './render';
+import { buscarContenido } from './api-itunes.js';
+import { presentarResultados } from './logica.js';
+import { mostrarMensaje, ponerResultados } from './render.js';
 
 const tipoBusqueda = document.querySelector("#tipo-busqueda");
 const contenidoBusqueda = document.querySelector("#contenido-busqueda");
@@ -26,8 +26,6 @@ async function realizarBusqueda() {
 
     if(items.length === 0){
       mostrarMensaje(resultado, `Sin resultados para "${termino}".`)
-    }else{
-      mostrarMensaje(resultado, `Hemos encontrado ${datos.length} resultados.`);
     }
 
     ponerResultados(resultado, items);
